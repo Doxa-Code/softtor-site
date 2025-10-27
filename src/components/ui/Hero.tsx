@@ -41,7 +41,7 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="mt-20 flex h-screen flex-col items-center justify-center text-center sm:mt-20"
+      className="mt-20 flex h-screen flex-col items-center justify-start text-center sm:mt-40 sm:max-h-[calc(100vh-10rem)] sm:overflow-hidden"
     >
       <h1
         id="hero-title"
@@ -64,7 +64,7 @@ export default function Hero() {
         style={{ animationDuration: "1400ms" }}
       >
         <canvas
-          className="absolute z-20 mx-auto aspect-square size-full w-full md:top-[1rem]"
+          className="absolute z-20 mx-auto aspect-square size-full w-full md:top-[-4rem]"
           ref={canvasRef}
           style={{ width: 1200, height: 1200 }}
         />

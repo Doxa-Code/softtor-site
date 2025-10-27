@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss"
 
 const config: Config = {
-  darkMode: "selector",
+  darkMode: ["class", "class"], // ⬅️ o padrão usado pelo shadcn (não "selector")
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,16 +13,47 @@ const config: Config = {
       colors: {
         primary: "#54E447",
         secondary: "#1049B1",
+
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primaryShadcn: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondaryShadcn: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
       fontFamily: {
         chakra: "var(--font-chakra-petch)",
         machina: "var(--font-neue-machina)",
       },
       keyframes: {
-        hide: {
-          from: { opacity: "1" },
-          to: { opacity: "0" },
-        },
+        hide: { from: { opacity: "1" }, to: { opacity: "0" } },
         slideDownAndFade: {
           from: { opacity: "0", transform: "translateY(-6px)" },
           to: { opacity: "1", transform: "translateY(0)" },
@@ -44,15 +75,10 @@ const config: Config = {
           to: { height: "var(--radix-accordion-content-height)" },
         },
         accordionClose: {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0px" },
         },
-        dialogOverlayShow: {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
+        dialogOverlayShow: { from: { opacity: "0" }, to: { opacity: "1" } },
         dialogContentShow: {
           from: {
             opacity: "0",
@@ -61,24 +87,12 @@ const config: Config = {
           to: { opacity: "1", transform: "translate(-50%, -50%) scale(1)" },
         },
         "slide-up-fade": {
-          from: {
-            opacity: "0",
-            transform: "translateY(12px)",
-          },
-          to: {
-            opacity: "1",
-            transform: "translateY(0px)",
-          },
+          from: { opacity: "0", transform: "translateY(12px)" },
+          to: { opacity: "1", transform: "translateY(0px)" },
         },
         "slide-down-fade": {
-          from: {
-            opacity: "0",
-            transform: "translateY(-26px)",
-          },
-          to: {
-            opacity: "1",
-            transform: "translateY(0px)",
-          },
+          from: { opacity: "0", transform: "translateY(-26px)" },
+          to: { opacity: "1", transform: "translateY(0px)" },
         },
       },
       animation: {
@@ -90,10 +104,8 @@ const config: Config = {
         slideUpAndFade: "slideUpAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
         slideRightAndFade:
           "slideRightAndFade 150ms cubic-bezier(0.16, 1, 0.3, 1)",
-        // Accordion
         accordionOpen: "accordionOpen 150ms cubic-bezier(0.87, 0, 0.13, 1)",
         accordionClose: "accordionClose 150ms cubic-bezier(0.87, 0, 0.13, 1)",
-        // Dialog
         dialogOverlayShow:
           "dialogOverlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
         dialogContentShow:
@@ -101,8 +113,14 @@ const config: Config = {
         "slide-down-fade": "slide-down-fade ease-in-out",
         "slide-up-fade": "slide-up-fade ease-in-out",
       },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [require("@tailwindcss/forms"), require("tailwindcss-animate")],
 }
+
 export default config
