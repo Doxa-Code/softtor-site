@@ -32,28 +32,20 @@ interface About3Props {
 
 const defaultCompanies = [
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-1.svg",
-    alt: "Arc",
+    src: "images/ww.png",
+    alt: "WW",
   },
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-2.svg",
-    alt: "Descript",
+    src: "images/estofaria-xingu.png",
+    alt: "Estofaria Xingu",
   },
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-3.svg",
-    alt: "Mercury",
+    src: "images/mineraliza.png",
+    alt: "Mineraliza",
   },
   {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-4.svg",
-    alt: "Ramp",
-  },
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-5.svg",
-    alt: "Retool",
-  },
-  {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-6.svg",
-    alt: "Watershed",
+    src: "images/lexxen.png",
+    alt: "Lexxen",
   },
 ]
 
@@ -107,22 +99,64 @@ const Companies = ({
           <div className="pointer-events-none absolute -top-1 right-1 z-10 hidden h-full w-full bg-[linear-gradient(to_right,hsl(var(--muted-foreground))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground))_1px,transparent_1px)] bg-[size:80px_80px] opacity-15 [mask-image:linear-gradient(to_bottom_right,#000,transparent,transparent)] md:block"></div>
         </div>
         <div className="py-10">
+          {" "}
           <h2 className="text-center text-3xl font-bold">
-            Empresas que confiam em nós
+            {" "}
+            Empresas que confiam em nós{" "}
           </h2>
-          <div className="mt-8 flex flex-wrap justify-center gap-8">
+          <div className="mt-8 grid grid-cols-2 place-items-center gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
             {companies.map((company, idx) => (
-              <div className="flex items-center gap-3" key={company.src + idx}>
+              <div
+                key={company.src + idx}
+                className="flex items-center justify-center"
+              >
                 <img
                   src={company.src}
                   alt={company.alt}
-                  className="h-6 w-auto md:h-8"
+                  className="h-8 w-auto max-w-[120px] object-contain opacity-80 transition-opacity hover:opacity-100"
                 />
               </div>
             ))}
           </div>
         </div>
-        <AnimatedTestimonials />
+
+        <AnimatedTestimonials
+          title="O que Nossos Clientes Dizem"
+          subtitle="Depoimentos reais de quem já experimentou a excelência da Softtor"
+          badgeText="Destaque em confiança"
+          testimonials={[
+            {
+              id: 1,
+              name: "Estofaria Xingu",
+              role: "Cliente desde 2025",
+              company: "",
+              content:
+                "Empresa séria e comprometida com o resultado do cliente. A Softtor está participando do crescimento da nossa empresa nos ajudando nas nossas soluções de sistema. Tem sido uma jornada de grandes melhorias e a SOFTTOR têm sido essencial nesse processo",
+              rating: 5,
+              avatar: "images/estofaria-xingu.png",
+            },
+            {
+              id: 2,
+              name: "Mineraliza",
+              role: "Cliente desde 2024",
+              company: "",
+              content:
+                "Empresa com bastante expertise técnica, comprometida com o resultado do cliente.",
+              rating: 5,
+              avatar: "images/mineraliza.png",
+            },
+            {
+              id: 3,
+              name: "WW Marketing",
+              role: "Cliente desde 2023",
+              company: "",
+              content:
+                "Empresa fantástica, desde o modo que trata o cliente quanto na entrega do serviço solicitado. Falando um pouco sobre o João, um rapaz muito bem educado, responsável e muito atencioso com a prestação de serviço. Muito obrigado por fazer parte desse projeto, espero está com você em vários outros. Sensacional!!!!",
+              rating: 5,
+              avatar: "images/ww.png",
+            },
+          ]}
+        />
       </div>
     </section>
   )
