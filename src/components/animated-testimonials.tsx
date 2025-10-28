@@ -144,7 +144,7 @@ export function AnimatedTestimonials({
           {/* Right side: Testimonial cards */}
           <motion.div
             variants={itemVariants}
-            className="relative mr-10 h-full min-h-[300px] md:min-h-[400px]"
+            className="relative h-full min-h-[400px] sm:mr-10 md:min-h-[400px]"
           >
             {testimonials.map((testimonial, index) => (
               <motion.div
@@ -173,7 +173,7 @@ export function AnimatedTestimonials({
 
                   <div className="relative mb-6 flex-1">
                     <Quote className="absolute -left-2 -top-2 h-8 w-8 rotate-180 text-primary/20" />
-                    <p className="relative z-10 text-lg font-medium leading-relaxed">
+                    <p className="relative z-10 line-clamp-6 text-lg font-medium leading-relaxed">
                       {`"${testimonial.content}"`}
                     </p>
                   </div>

@@ -80,7 +80,7 @@ const Companies = ({
           </p>
         </div>
         <div className="relative overflow-hidden rounded-xl bg-muted p-10 md:p-16">
-          <div className="flex flex-wrap justify-between gap-10 text-center">
+          <div className="grid grid-cols-2 flex-wrap justify-between gap-10 text-center md:flex">
             {achievements.map((item, idx) => (
               <div className="flex flex-col gap-4" key={item.label + idx}>
                 <p className="text-lg">{item.label}</p>
@@ -107,7 +107,7 @@ const Companies = ({
                 <img
                   src={company.src}
                   alt={company.alt}
-                  className="h-24 w-auto max-w-[200px] object-contain opacity-80 transition-opacity hover:opacity-100"
+                  className="h-12 w-auto max-w-[200px] object-contain opacity-80 transition-opacity hover:opacity-100 sm:h-24"
                 />
               </div>
             ))}

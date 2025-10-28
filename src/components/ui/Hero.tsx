@@ -52,7 +52,7 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="mt-20 flex h-screen flex-col items-center justify-start text-center sm:mt-40 sm:max-h-[calc(100vh-10rem)] sm:overflow-hidden sm:pt-20"
+      className="mt-20 flex h-screen max-h-[calc(100vh-5rem)] flex-col items-center justify-start overflow-hidden text-center sm:mt-40 sm:max-h-[calc(100vh-10rem)]"
     >
       <h1
         id="hero-title"
@@ -73,7 +73,7 @@ export default function Hero() {
       </p>
 
       <div
-        className="container relative mx-auto flex min-h-[50rem] w-full animate-slide-up-fade items-center justify-center sm:ml-auto sm:w-full"
+        className="container relative mx-auto flex min-h-[50rem] w-full animate-slide-up-fade items-start justify-center sm:ml-auto sm:w-full"
         style={{ animationDuration: "1400ms" }}
       >
         <canvas
