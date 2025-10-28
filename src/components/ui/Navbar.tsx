@@ -2,7 +2,7 @@
 
 import { siteConfig } from "@/app/siteConfig"
 import useScroll from "@/lib/use-scroll"
-import { cx } from "@/lib/utils"
+import { cx, scrollToSection } from "@/lib/utils"
 import { RiCloseLine, RiMenuLine } from "@remixicon/react"
 import Link from "next/link"
 import React from "react"
@@ -12,13 +12,6 @@ import { Button } from "../Button"
 export function Navigation() {
   const scrolled = useScroll(15)
   const [open, setOpen] = React.useState(false)
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
 
   React.useEffect(() => {
     const mediaQuery: MediaQueryList = window.matchMedia("(min-width: 768px)")
@@ -72,11 +65,21 @@ export function Navigation() {
               </button>
             </div>
           </nav>
-          <Button className="hidden h-10 !bg-secondary font-semibold md:flex">
-            Contate-nos
-          </Button>
+          <Link
+            href={"https://api.whatsapp.com/send?phone=5561996105046"}
+            target="_blank"
+          >
+            <Button className="hidden h-10 !bg-secondary font-semibold md:flex">
+              Contate-nos
+            </Button>
+          </Link>
           <div className="flex gap-x-2 md:hidden">
-            <Button className="!bg-secondary">Contate-nos</Button>
+            <Link
+              href={"https://api.whatsapp.com/send?phone=5561996105046"}
+              target="_blank"
+            >
+              <Button className="!bg-secondary">Contate-nos</Button>
+            </Link>
             <Button
               onClick={() => setOpen(!open)}
               variant="light"
@@ -98,19 +101,19 @@ export function Navigation() {
         >
           <ul className="space-y-4 font-medium">
             <li onClick={() => setOpen(false)}>
-              <Link href={siteConfig.baseLinks.about}>Metodologia</Link>
+              <button onClick={() => scrollToSection("metodologia")}>
+                Metodologia
+              </button>
             </li>
             <li onClick={() => setOpen(false)}>
-              <Link href={siteConfig.baseLinks.pricing}>Serviços</Link>
+              <button onClick={() => scrollToSection("servicos")}>
+                Serviços
+              </button>
             </li>
             <li onClick={() => setOpen(false)}>
-              <Link href={siteConfig.baseLinks.changelog}>Tecnologias</Link>
-            </li>
-            <li onClick={() => setOpen(false)}>
-              <Link href={siteConfig.baseLinks.changelog}>Clientes</Link>
-            </li>
-            <li onClick={() => setOpen(false)}>
-              <Link href={siteConfig.baseLinks.changelog}>Consultoria</Link>
+              <button onClick={() => scrollToSection("clientes")}>
+                Clientes
+              </button>
             </li>
           </ul>
         </nav>

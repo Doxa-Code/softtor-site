@@ -1,18 +1,32 @@
+"use client"
+
+import { scrollToSection } from "@/lib/utils"
 import { RiArrowRightUpLine } from "@remixicon/react"
 import Link from "next/link"
 import { Logo } from "../../../public/Logo"
-import ThemeSwitch from "../ThemeSwitch"
 
 const navigation = {
   product: [
-    { name: "Metodologia", href: "#", external: false },
-    { name: "Serviços", href: "/pricing", external: false },
-    { name: "Clientes", href: "#", external: false },
+    { name: "Metodologia", href: "metodologia", external: false },
+    { name: "Serviços", href: "servicos", external: false },
+    { name: "Clientes", href: "clientes", external: false },
   ],
   resources: [
-    { name: "Instagram", href: "#", external: true },
-    { name: "Linkedin", href: "#", external: true },
-    { name: "Whatsapp", href: "#", external: true },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/softtor.ds/",
+      external: true,
+    },
+    {
+      name: "Linkedin",
+      href: "https://www.linkedin.com/authwall?trk=bf&trkInfo=AQGMVANTDG10LQAAAZor3WkQzn0hOxQe6IEdTtzqEX8tqSVbJcmQZVapvZBQfxhrvoqoZqugBwIBtDfsHF6_47rP1f-0_ZAZmQIYU8bKNOQnlYFng992fHrEvJoWPb9XJajpFM4=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fsofttor",
+      external: true,
+    },
+    {
+      name: "Whatsapp",
+      href: "https://api.whatsapp.com/send?phone=5561996105046",
+      external: true,
+    },
   ],
 }
 
@@ -27,9 +41,6 @@ export default function Footer() {
               Criamos soluções digitais que conectam eficiência e inovação,
               ajudando empresas a crescer com tecnologia confiável e segura.
             </p>
-            <div className="flex space-x-6">
-              <ThemeSwitch />
-            </div>
             <div></div>
           </div>
           <div className="mt-16 grid grid-cols-1 gap-14 sm:gap-8 md:grid-cols-1 xl:col-span-2 xl:mt-0">
@@ -45,11 +56,9 @@ export default function Footer() {
                 >
                   {navigation.product.map((item) => (
                     <li key={item.name} className="w-fit">
-                      <Link
+                      <button
                         className="flex rounded-md text-sm text-gray-500 transition hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                        href={item.href}
-                        target={item.external ? "_blank" : undefined}
-                        rel={item.external ? "noopener noreferrer" : undefined}
+                        onClick={() => scrollToSection(item.href)}
                       >
                         <span>{item.name}</span>
                         {item.external && (
@@ -60,7 +69,7 @@ export default function Footer() {
                             />
                           </div>
                         )}
-                      </Link>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -99,22 +108,11 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-gray-200 pt-8 dark:border-gray-800 sm:mt-20 sm:flex-row lg:mt-24">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-gray-200 pt-8 dark:border-gray-800 sm:flex-row">
           <p className="text-sm leading-5 text-gray-500 dark:text-gray-400">
             &copy; {new Date().getFullYear()} SOFTTOR TODOS OS DIREITOS
             RESERVADOS.
           </p>
-          <div className="rounded-full border border-gray-200 py-1 pl-1 pr-2 dark:border-gray-800">
-            <div className="flex items-center gap-1.5">
-              <div className="relative size-4 shrink-0">
-                <div className="absolute inset-[1px] rounded-full bg-emerald-500/20 dark:bg-emerald-600/20" />
-                <div className="absolute inset-1 rounded-full bg-emerald-600 dark:bg-emerald-500" />
-              </div>
-              <span className="text-xs text-gray-700 dark:text-gray-50">
-                All systems operational
-              </span>
-            </div>
-          </div>
         </div>
       </div>
     </footer>

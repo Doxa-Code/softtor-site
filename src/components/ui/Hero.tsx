@@ -9,18 +9,13 @@ export default function Hero() {
     let globe: any
     let phi = 4.7
 
-    const create = () => {
+    const init = () => {
       if (!canvasRef.current) return
 
-      // Captura tamanho dinâmico do container
-      const size =
-        canvasRef.current.parentElement?.offsetWidth || window.innerWidth
-      const pixelRatio = Math.min(window.devicePixelRatio, 2)
-
       globe = createGlobe(canvasRef.current, {
-        devicePixelRatio: pixelRatio,
-        width: size * pixelRatio,
-        height: size * pixelRatio,
+        devicePixelRatio: 2,
+        width: 1200 * 2,
+        height: 1200 * 2,
         phi: 0,
         theta: -0.3,
         dark: 1,
@@ -44,27 +39,20 @@ export default function Hero() {
       })
     }
 
-    // Cria o globo inicial
-    create()
-
-    // Reajusta ao redimensionar a janela
-    const handleResize = () => {
-      if (globe) globe.destroy()
-      create()
-    }
-
-    window.addEventListener("resize", handleResize)
+    const timeout = setTimeout(() => {
+      requestAnimationFrame(init)
+    }, 300)
 
     return () => {
+      clearTimeout(timeout)
       if (globe) globe.destroy()
-      window.removeEventListener("resize", handleResize)
     }
   }, [])
 
   return (
     <section
       aria-labelledby="hero-title"
-      className="mt-20 flex h-screen max-h-[calc(100vh-5rem)] w-full flex-col items-center justify-start overflow-hidden text-center sm:mt-40 sm:max-h-[calc(100vh-10rem)] sm:overflow-hidden"
+      className="mt-20 flex h-screen flex-col items-center justify-start text-center sm:mt-40 sm:max-h-[calc(100vh-10rem)] sm:overflow-hidden sm:pt-20"
     >
       <h1
         id="hero-title"
@@ -85,12 +73,13 @@ export default function Hero() {
       </p>
 
       <div
-        className="container mx-auto flex w-full animate-slide-up-fade items-center justify-center sm:ml-auto sm:w-full"
-        style={{ animationDuration: "1400ms", minHeight: "40rem" }}
+        className="container relative mx-auto flex min-h-[50rem] w-full animate-slide-up-fade items-center justify-center sm:ml-auto sm:w-full"
+        style={{ animationDuration: "1400ms" }}
       >
         <canvas
           ref={canvasRef}
-          className="absolute z-20 mx-auto aspect-square w-[90vw] max-w-[700px]"
+          className="absolute z-20 mx-auto aspect-square size-full w-full md:top-[-4rem]"
+          style={{ width: 1200, height: 1200 }}
         />
       </div>
     </section>
