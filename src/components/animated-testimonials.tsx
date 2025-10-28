@@ -2,8 +2,8 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
+import { motion, useAnimation, useInView, Variants } from "framer-motion"
 import { Quote, Star } from "lucide-react"
-import { motion, useAnimation, useInView } from "framer-motion"
 import { useEffect, useRef, useState } from "react"
 
 export interface Testimonial {
@@ -56,7 +56,7 @@ export function AnimatedTestimonials({
     },
   }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -91,27 +91,38 @@ export function AnimatedTestimonials({
   }
 
   return (
-    <section ref={sectionRef} id="testimonials" className={`py-24 overflow-hidden bg-muted/30 ${className || ""}`}>
+    <section
+      ref={sectionRef}
+      id="testimonials"
+      className={`overflow-hidden bg-muted/30 py-24 ${className || ""}`}
+    >
       <div className="px-4 md:px-6">
         <motion.div
           initial="hidden"
           animate={controls}
           variants={containerVariants}
-          className="grid grid-cols-1 gap-16 w-full md:grid-cols-2 lg:gap-24"
+          className="grid w-full grid-cols-1 gap-16 md:grid-cols-2 lg:gap-24"
         >
           {/* Left side: Heading and navigation */}
-          <motion.div variants={itemVariants} className="flex flex-col justify-center">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col justify-center"
+          >
             <div className="space-y-6">
               {badgeText && (
-                <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">
+                <div className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
                   <Star className="mr-1 h-3.5 w-3.5 fill-primary" />
                   <span>{badgeText}</span>
                 </div>
               )}
 
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">{title}</h2>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                {title}
+              </h2>
 
-              <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">{subtitle}</p>
+              <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
+                {subtitle}
+              </p>
 
               <div className="flex items-center gap-3 pt-4">
                 {testimonials.map((_, index) => (
@@ -119,7 +130,9 @@ export function AnimatedTestimonials({
                     key={index}
                     onClick={() => setActiveIndex(index)}
                     className={`h-2.5 rounded-full transition-all duration-300 ${
-                      activeIndex === index ? "w-10 bg-primary" : "w-2.5 bg-muted-foreground/30"
+                      activeIndex === index
+                        ? "w-10 bg-primary"
+                        : "w-2.5 bg-muted-foreground/30"
                     }`}
                     aria-label={`View testimonial ${index + 1}`}
                   />
@@ -129,7 +142,10 @@ export function AnimatedTestimonials({
           </motion.div>
 
           {/* Right side: Testimonial cards */}
-          <motion.div variants={itemVariants} className="relative h-full mr-10 min-h-[300px] md:min-h-[400px]">
+          <motion.div
+            variants={itemVariants}
+            className="relative mr-10 h-full min-h-[300px] md:min-h-[400px]"
+          >
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
@@ -143,26 +159,36 @@ export function AnimatedTestimonials({
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 style={{ zIndex: activeIndex === index ? 10 : 0 }}
               >
-                <div className="bg-card border shadow-lg rounded-xl p-8 h-full flex flex-col">
+                <div className="flex h-full flex-col rounded-xl border bg-card p-8 shadow-lg">
                   <div className="mb-6 flex gap-2">
                     {Array(testimonial.rating)
                       .fill(0)
                       .map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500" />
+                        <Star
+                          key={i}
+                          className="h-5 w-5 fill-yellow-500 text-yellow-500"
+                        />
                       ))}
                   </div>
 
                   <div className="relative mb-6 flex-1">
-                    <Quote className="absolute -top-2 -left-2 h-8 w-8 text-primary/20 rotate-180" />
-                    <p className="relative z-10 text-lg font-medium leading-relaxed">"{testimonial.content}"</p>
+                    <Quote className="absolute -left-2 -top-2 h-8 w-8 rotate-180 text-primary/20" />
+                    <p className="relative z-10 text-lg font-medium leading-relaxed">
+                      {`"${testimonial.content}"`}
+                    </p>
                   </div>
 
                   <Separator className="my-4" />
 
                   <div className="flex items-center gap-4">
                     <Avatar className="h-12 w-12 border">
-                      <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                      <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                      <AvatarImage
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                      />
+                      <AvatarFallback>
+                        {testimonial.name.charAt(0)}
+                      </AvatarFallback>
                     </Avatar>
                     <div>
                       <h3 className="font-semibold">{testimonial.name}</h3>
@@ -177,17 +203,27 @@ export function AnimatedTestimonials({
 
             {/* Decorative elements */}
             <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-xl bg-primary/5"></div>
-            <div className="absolute -top-6 -right-6 h-24 w-24 rounded-xl bg-primary/5"></div>
+            <div className="absolute -right-6 -top-6 h-24 w-24 rounded-xl bg-primary/5"></div>
           </motion.div>
         </motion.div>
 
         {/* Logo cloud */}
         {trustedCompanies.length > 0 && (
-          <motion.div variants={itemVariants} initial="hidden" animate={controls} className="mt-24 text-center">
-            <h3 className="text-sm font-medium text-muted-foreground mb-8">{trustedCompaniesTitle}</h3>
+          <motion.div
+            variants={itemVariants}
+            initial="hidden"
+            animate={controls}
+            className="mt-24 text-center"
+          >
+            <h3 className="mb-8 text-sm font-medium text-muted-foreground">
+              {trustedCompaniesTitle}
+            </h3>
             <div className="flex flex-wrap justify-center gap-x-12 gap-y-8">
               {trustedCompanies.map((company) => (
-                <div key={company} className="text-2xl font-semibold text-muted-foreground/50">
+                <div
+                  key={company}
+                  className="text-2xl font-semibold text-muted-foreground/50"
+                >
                   {company}
                 </div>
               ))}
