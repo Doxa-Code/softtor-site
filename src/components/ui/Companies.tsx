@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { AnimatedTestimonials } from "../animated-testimonials"
 
 interface About3Props {
@@ -32,19 +33,19 @@ interface About3Props {
 
 const defaultCompanies = [
   {
-    src: "images/ww.png",
+    src: "/images/ww.png",
     alt: "WW",
   },
   {
-    src: "images/estofaria-xingu.png",
+    src: "/images/estofaria-xingu.png",
     alt: "Estofaria Xingu",
   },
   {
-    src: "images/mineraliza.png",
+    src: "/images/mineraliza.png",
     alt: "Mineraliza",
   },
   {
-    src: "images/lexxen.png",
+    src: "/images/lexxen.png",
     alt: "Lexxen",
   },
 ]
@@ -104,11 +105,14 @@ const Companies = ({
                 key={company.src + idx}
                 className="flex items-center justify-center"
               >
-                <img
-                  src={company.src}
-                  alt={company.alt}
-                  className="h-12 w-auto max-w-[200px] object-contain opacity-80 transition-opacity hover:opacity-100 sm:h-24"
-                />
+                <div className="relative h-12 w-[200px] sm:h-24">
+                  <Image
+                    src={company.src}
+                    alt={company.alt}
+                    fill
+                    className="object-contain opacity-80 transition-opacity hover:opacity-100"
+                  />
+                </div>
               </div>
             ))}
           </div>

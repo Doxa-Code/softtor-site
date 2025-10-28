@@ -48,6 +48,10 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+
+      transitionTimingFunction: {
+        "custom-rotate": "cubic-bezier(0.87, 0, 0.13, 1)",
+      },
       fontFamily: {
         chakra: "var(--font-chakra-petch)",
         machina: "var(--font-neue-machina)",

@@ -34,7 +34,7 @@ const AccordionTrigger = React.forwardRef<
       <RiAddLine
         className={cx(
           // base
-          "size-5 shrink-0 transition-transform duration-150 ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:-rotate-45",
+          "ease-custom-rotate size-5 shrink-0 transition-transform duration-150 group-data-[state=open]:-rotate-45",
           // text color
           "text-gray-400 dark:text-gray-600",
           // disabled
