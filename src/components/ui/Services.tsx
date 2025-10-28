@@ -33,12 +33,12 @@ const Services = () => {
   ]
 
   return (
-    <section className="my-20 flex w-full justify-center">
+    <section id="servicos" className="my-20 flex w-full justify-center">
       <div className="container">
         <div className="mx-auto max-w-6xl space-y-12">
           <div className="space-y-4 text-center">
             <h1
-              className="inline-block animate-slide-up-fade bg-gradient-to-br from-gray-900 to-gray-800 bg-clip-text p-2 text-4xl font-bold tracking-tighter text-transparent dark:from-gray-50 dark:to-gray-300 sm:text-6xl md:text-7xl"
+              className="inline-block animate-slide-up-fade p-2 text-4xl font-bold tracking-tighter text-gray-700 dark:text-white sm:text-6xl md:text-7xl"
               style={{ animationDuration: "700ms" }}
             >
               Nossos serviços

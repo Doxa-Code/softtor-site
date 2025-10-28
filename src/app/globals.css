@@ -7,6 +7,10 @@
   backdrop-filter: blur(3px);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .backdrop-blur-nav {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);

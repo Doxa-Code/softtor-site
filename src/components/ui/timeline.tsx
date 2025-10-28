@@ -29,12 +29,13 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <section
+      id="metodologia"
       className="w-full bg-background py-40 font-sans text-foreground md:px-10"
       ref={containerRef}
     >
       <div className="mx-auto max-w-7xl px-4 pb-20 md:px-8 lg:px-10">
         <h1
-          className="inline-block animate-slide-up-fade bg-gradient-to-br from-gray-900 to-gray-800 bg-clip-text p-2 text-4xl font-bold tracking-tighter text-transparent dark:from-gray-50 dark:to-gray-300 sm:text-6xl md:text-7xl"
+          className="inline-block animate-slide-up-fade bg-clip-text p-2 text-4xl font-bold tracking-tighter text-gray-700 dark:text-white sm:text-6xl md:text-7xl"
           style={{ animationDuration: "700ms" }}
         >
           Nossa Metodologia

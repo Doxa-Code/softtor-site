@@ -13,6 +13,13 @@ export function Navigation() {
   const scrolled = useScroll(15)
   const [open, setOpen] = React.useState(false)
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   React.useEffect(() => {
     const mediaQuery: MediaQueryList = window.matchMedia("(min-width: 768px)")
     const handleMediaQueryChange = () => {
@@ -44,22 +51,25 @@ export function Navigation() {
             <Logo className="h-min max-h-[50px] w-28 md:w-32" />
           </Link>
           <nav className="hidden md:absolute md:left-1/2 md:top-1/2 md:block md:-translate-x-1/2 md:-translate-y-1/2 md:transform">
-            <div className="flex items-center gap-10 font-medium [&>a:hover]:border-b [&>a:hover]:border-primary [&>a:hover]:text-primary">
-              <Link className="px-2 py-1" href={siteConfig.baseLinks.about}>
+            <div className="flex items-center gap-10 font-medium [&>button:hover]:border-b [&>button:hover]:border-primary [&>button:hover]:text-primary">
+              <button
+                className="px-2 py-1"
+                onClick={() => scrollToSection("metodologia")}
+              >
                 Metodologia
-              </Link>
-              <Link className="px-2 py-1" href={siteConfig.baseLinks.pricing}>
+              </button>
+              <button
+                className="px-2 py-1"
+                onClick={() => scrollToSection("servicos")}
+              >
                 Serviços
-              </Link>
-              <Link className="px-2 py-1" href={siteConfig.baseLinks.changelog}>
-                Tecnologias
-              </Link>
-              <Link className="px-2 py-1" href={siteConfig.baseLinks.changelog}>
+              </button>
+              <button
+                className="px-2 py-1"
+                onClick={() => scrollToSection("clientes")}
+              >
                 Clientes
-              </Link>
-              <Link className="px-2 py-1" href={siteConfig.baseLinks.changelog}>
-                Consultoria
-              </Link>
+              </button>
             </div>
           </nav>
           <Button className="hidden h-10 !bg-secondary font-semibold md:flex">
