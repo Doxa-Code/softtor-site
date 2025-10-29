@@ -33,7 +33,7 @@ const Services = () => {
   ]
 
   return (
-    <section id="servicos" className="my-20 flex w-full justify-center">
+    <section id="servicos" className="flex w-full justify-center pt-32">
       <div className="container">
         <div className="mx-auto max-w-6xl space-y-12">
           <div className="space-y-4 text-center">
