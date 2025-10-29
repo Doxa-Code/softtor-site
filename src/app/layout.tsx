@@ -76,11 +76,11 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: "yourname",
+      name: "Softtor",
       url: "",
     },
   ],
-  creator: "yourname",
+  creator: "Softtor",
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    creator: "@yourname",
+    creator: "@softtor",
   },
   icons: {
     icon: "/favicon.ico",
@@ -106,9 +106,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html lang="pt-BR" className="dark" suppressHydrationWarning>
       <body
-        className={`${chakraPetch.variable} ${neueMachina.variable} min-h-screen scroll-auto antialiased selection:bg-indigo-100 selection:text-indigo-700 dark:bg-gray-950`}
+        className={`${chakraPetch.variable} ${neueMachina.variable} dark min-h-screen scroll-auto bg-gray-950 antialiased selection:bg-indigo-100 selection:text-indigo-700`}
       >
         <ThemeProvider
           attribute="class"

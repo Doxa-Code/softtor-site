@@ -106,7 +106,7 @@ export function AnimatedTestimonials({
           {/* Left side: Heading and navigation */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col justify-center"
+            className="flex flex-col justify-start"
           >
             <div className="space-y-6">
               {badgeText && (
@@ -116,7 +116,7 @@ export function AnimatedTestimonials({
                 </div>
               )}
 
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tighter text-white sm:text-4xl md:text-5xl">
                 {title}
               </h2>
 
@@ -159,7 +159,7 @@ export function AnimatedTestimonials({
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 style={{ zIndex: activeIndex === index ? 10 : 0 }}
               >
-                <div className="flex h-full flex-col rounded-xl border bg-card p-8 shadow-lg">
+                <div className="flex h-full flex-col rounded-xl border bg-gray-800 p-8 shadow-lg">
                   <div className="mb-6 flex gap-2">
                     {Array(testimonial.rating)
                       .fill(0)
@@ -173,7 +173,7 @@ export function AnimatedTestimonials({
 
                   <div className="relative mb-6 flex-1">
                     <Quote className="absolute -left-2 -top-2 h-8 w-8 rotate-180 text-primary/20" />
-                    <p className="relative z-10 line-clamp-6 text-lg font-medium leading-relaxed">
+                    <p className="relative z-10 line-clamp-6 text-lg font-medium leading-relaxed text-white">
                       {`"${testimonial.content}"`}
                     </p>
                   </div>
@@ -185,16 +185,20 @@ export function AnimatedTestimonials({
                       <AvatarImage
                         src={testimonial.avatar}
                         alt={testimonial.name}
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-contain"
                       />
                       <AvatarFallback>
                         {testimonial.name.charAt(0)}
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <h3 className="font-semibold">{testimonial.name}</h3>
+                      <h3 className="font-semibold text-white">
+                        {testimonial.name}
+                      </h3>
                       <p className="text-sm text-muted-foreground">
-                        {testimonial.role}, {testimonial.company}
+                        {[testimonial.role, testimonial.company]
+                          .filter(Boolean)
+                          .join(", ")}
                       </p>
                     </div>
                   </div>

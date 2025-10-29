@@ -52,7 +52,7 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="mt-20 flex h-screen max-h-[calc(100vh-5rem)] flex-col items-center justify-start overflow-hidden text-center sm:mt-40 sm:max-h-[calc(100vh-10rem)]"
+      className="mt-20 flex h-screen max-h-[calc(100vh-5rem)] flex-col items-center justify-start overflow-hidden bg-gray-950 text-center sm:mt-40 sm:max-h-[calc(100vh-10rem)]"
     >
       <h1
         id="hero-title"

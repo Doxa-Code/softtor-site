@@ -60,10 +60,12 @@ const Services = () => {
                 className="space-y-6 rounded-lg border border-border p-8 transition-shadow hover:shadow-sm"
               >
                 <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-muted p-3">
+                  <div className="rounded-full bg-primary p-3">
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-semibold">{service.title}</h3>
+                  <h3 className="text-2xl font-semibold text-white">
+                    {service.title}
+                  </h3>
                 </div>
                 <p className="leading-relaxed text-muted-foreground">
                   {service.description}

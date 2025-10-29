@@ -10,11 +10,6 @@ export default function Home() {
       <Methodology />
       <Services />
       <Companies />
-      {/* <LogoCloud />
-      <GlobalDatabase />
-      <CodeExample />
-      <Features />
-      <Cta /> */}
     </main>
   )
 }

@@ -66,13 +66,13 @@ const Companies = ({
       <div className="container flex flex-col gap-10">
         <div className="mb-14 flex flex-col gap-4 text-center">
           <h1
-            className="inline-block max-w-2xl animate-slide-up-fade p-2 text-center text-4xl font-bold tracking-tighter text-gray-700 dark:text-white sm:text-6xl md:text-7xl"
+            className="inline-block max-w-2xl animate-slide-up-fade py-2 text-center text-4xl font-bold tracking-tighter text-white sm:text-6xl md:text-left md:text-7xl"
             style={{ animationDuration: "700ms" }}
           >
             Nossos Clientes
           </h1>
           <p
-            className="max-w-2xl animate-slide-up-fade text-center text-lg text-gray-700 dark:text-gray-400"
+            className="max-w-2xl animate-slide-up-fade text-center text-lg text-gray-400 md:text-left"
             style={{ animationDuration: "900ms" }}
           >
             Parceiros de sucesso que confiam em nossas soluções tecnológicas
@@ -80,41 +80,39 @@ const Companies = ({
             extraordinários.
           </p>
         </div>
-        <div className="relative overflow-hidden rounded-xl bg-muted p-10 md:p-16">
+        <div className="relative flex flex-col gap-20 overflow-hidden rounded-xl bg-muted p-10 md:p-16">
           <div className="grid grid-cols-2 flex-wrap justify-between gap-10 text-center md:flex">
             {achievements.map((item, idx) => (
               <div className="flex flex-col gap-4" key={item.label + idx}>
-                <p className="text-lg">{item.label}</p>
-                <span className="text-4xl font-semibold md:text-6xl">
+                <p className="text-lg text-white">{item.label}</p>
+                <span className="text-4xl font-semibold text-primary md:text-6xl">
                   {item.value}
                 </span>
               </div>
             ))}
           </div>
-          <div className="pointer-events-none absolute -top-1 right-1 z-10 hidden h-full w-full bg-[linear-gradient(to_right,hsl(var(--muted-foreground))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground))_1px,transparent_1px)] bg-[size:80px_80px] opacity-15 [mask-image:linear-gradient(to_bottom_right,#000,transparent,transparent)] md:block"></div>
-        </div>
-        <div className="flex flex-col items-center justify-center py-10">
-          {" "}
-          <h2 className="text-center text-3xl font-bold">
-            {" "}
-            Empresas que confiam em nós{" "}
-          </h2>
-          <div className="mt-8 grid max-w-[1100px] grid-cols-2 place-items-center gap-14 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
-            {companies.map((company, idx) => (
-              <div
-                key={company.src + idx}
-                className="flex items-center justify-center"
-              >
-                <div className="relative h-12 w-[200px] sm:h-24">
-                  <Image
-                    src={company.src}
-                    alt={company.alt}
-                    fill
-                    className="object-contain opacity-80 transition-opacity hover:opacity-100"
-                  />
+          <div className="pointer-events-none absolute -top-1 right-1 z-10 hidden h-full w-full bg-[linear-gradient(to_right,hsl(var(--muted-foreground))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground))_1px,transparent_1px)] bg-[size:80px_80px] opacity-15 [mask-image:linear-gradient(to_bottom_right,#000,transparent,transparent)] md:block" />
+          <div className="flex flex-col items-center justify-center py-10">
+            <h2 className="text-center text-3xl font-bold text-white">
+              Empresas que confiam em nós
+            </h2>
+            <div className="mt-8 grid max-w-[1100px] place-items-center gap-14 sm:grid-cols-3 md:grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
+              {companies.map((company, idx) => (
+                <div
+                  key={company.src + idx}
+                  className="flex items-center justify-center p-4"
+                >
+                  <div className="relative h-12 w-[200px] sm:h-24">
+                    <Image
+                      src={company.src}
+                      alt={company.alt}
+                      fill
+                      className="object-contain opacity-80 transition-opacity hover:opacity-100"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
